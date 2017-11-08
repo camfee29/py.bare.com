@@ -41,7 +41,7 @@ class Collect:
         if not os.path.exists(dir):
             os.makedirs(dir)
         urllib.request.urlretrieve(url, filename)
-        
+
 if __name__=="__main__":
     cc = Collect()
     '''
@@ -71,10 +71,3 @@ if __name__=="__main__":
         print(val[0])
         print(val[1])
     print(len(url_name))
-    
-    
-    
-    
-    
-    
-    

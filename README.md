@@ -1,12 +1,13 @@
 pybare
 ===
-# python3¿ò¼Ü
--| Bare ÏµÍ³ÀàÎÄ¼þ¼Ð <br>
-  --| mysqldb.py mysql²Ù×÷Àà·â×° <br>
-  --| redisdb.py redis²Ù×÷Àà·â×° <br>
-  --| memmemcachedb.py memcache²Ù×÷Àà·â×° <br>
-  --| collect.py ²É¼¯Àà²Ù×÷Àà·â×° <br>
--| Config ÅäÖÃÎÄ¼þ <br>
--| test.py Ê¹ÓÃÊ¾Àý <br>
+# python3æ¡†æž¶
+-| Bare ç³»ç»Ÿç±»æ–‡ä»¶å¤¹ <br>
+  --| mysqldb.py mysqlæ“ä½œç±»å°è£… <br>
+  --| redisdb.py redisæ“ä½œç±»å°è£… <br>
+  --| memcachedb.py memcacheæ“ä½œç±»å°è£… <br>
+  --| collect.py é‡‡é›†ç±»æ“ä½œç±»å°è£… <br>
+-| Config é…ç½®æ–‡ä»¶ <br>
+-| test.py ä½¿ç”¨ç¤ºä¾‹ <br>
 
-##### ¸ü¶à¹¦ÄÜ¾¡ÇëÆÚ´ý¡£¡£¡£
+##### æ›´å¤šåŠŸèƒ½å°½è¯·æœŸå¾…ã€‚ã€‚ã€‚
+

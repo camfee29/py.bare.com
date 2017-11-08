@@ -25,13 +25,13 @@ class MysqlDB:
     def selectDB(self, dbname, charset = ''):
         self.__dbname = dbname
         if charset:
-            self.__charset = charset 
+            self.__charset = charset
         return self
     # 切换数据库配置
     def selectConfig(self, section):
         self.__config(section)
         return self
-    # 查询数量 
+    # 查询数量
     def getCount(self, table, where = {}):
         if where:
             wheresql = self._parseWhere(where)
@@ -53,9 +53,9 @@ class MysqlDB:
             order = 'ORDER BY ' + order
         if limit:
             if isinstance(limit, list):
-                limit = 'LIMIT ' + limit[0] + ', ' +limit[1]
+                limit = 'LIMIT ' + str(limit[0]) + ', ' + str(limit[1])
             else:
-                limit = 'LIMIT ' + limit
+                limit = 'LIMIT ' + str(limit)
         self.__sql = "SELECT %s FROM `%s` WHERE %s %s %s" % (fields, table, ' AND '.join(wheresql), order, limit)
         res = self.getAll()
         # 结果重组为关系dict数组
@@ -105,7 +105,7 @@ class MysqlDB:
             return False
         fields = []
         for key, val in row.items():
-            fields.append('`' + key + '`="' + val + '"')
+            fields.append('`' + str(key) + '`="' + str(val) + '"')
         wheresql = self._parseWhere(where)
         self.__sql = "UPDATE `%s` SET %s WHERE %s" % (table, ', '.join(fields) , ' AND '.join(wheresql))
         cursor = self._exec()
@@ -117,7 +117,7 @@ class MysqlDB:
         wheresql = self._parseWhere(where)
         self.__sql = "DELETE FROM `%s` WHERE %s" % (table, ' AND '.join(wheresql))
         cursor = self._exec()
-        return cursor.rowcount  
+        return cursor.rowcount
     # 原生sql语句查询
     def query(self, sql):
         self.__sql = sql
@@ -135,7 +135,7 @@ class MysqlDB:
             # 使用 cursor() 方法创建一个游标对象 cursor
             self._connect()
             cursor = self.__db.cursor()
-            # 使用 execute()  方法执行 SQL 
+            # 使用 execute()  方法执行 SQL
             cursor.execute(self.__sql)
             return cursor
         else:
@@ -160,16 +160,16 @@ class MysqlDB:
         wheresql = []
         for key, val in where.items():
             if isinstance(val, list):
-                wheresql.append('`' + key +'`' + val[0] + '"' + val[1] +'"')
+                wheresql.append('`' + str(key) +'`' + str(val[0]) + '"' + str(val[1]) +'"')
             else:
-                    wheresql.append('`' + key + '`="' + val +'"')
+                    wheresql.append('`' + str(key) + '`="' + str(val) +'"')
         return wheresql
     def __del__(self):
         if self.__db:
             self.__db.close()
         self.__sql = ''
 
-        
+
 if __name__=="__main__":
     '''
     DB = MysqlDB()
@@ -186,11 +186,3 @@ if __name__=="__main__":
     #res = DB.find('user',{'LoginName':['=','zjf']},'UserId,Age,Sex')
     #res = DB.find('user',{'LoginName':'zjf'},'UserId,Age,Sex')
     #res = DB.getCount('user',{'LoginName':'zjf2'})
-
-    
-    
-    
-    
-    
-    
-    
