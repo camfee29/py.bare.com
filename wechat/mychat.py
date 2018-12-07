@@ -9,7 +9,13 @@ from itchat.content import *
 @itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING])
 def text_reply(msg):
     print(msg)
+    '''
     msg.user.send('%s: %s' % (msg.type, msg.text))
+    str = input('请输入：')
+    print ('你输入的内容是: ', str)
+    if (str):
+        msg.user.send(str)
+    '''
 
 
 @itchat.msg_register([PICTURE, RECORDING, ATTACHMENT, VIDEO])
@@ -32,15 +38,18 @@ def add_friend(msg):
 @itchat.msg_register(TEXT, isGroupChat=True)
 def text_reply(msg):
     print(msg)
+    '''
     if msg.isAt:
-        msg.user.send(u'@%s\u2005I received: %s' % (
-            msg.actualNickName, msg.text))
+        msg.user.send(u'@%s\u2005I received: %s' % (msg.actualNickName, msg.text))
+    '''
 
 
+'''
 @itchat.msg_register(itchat.content.TEXT)
 def print_content(msg):
     print(msg)
-    # itchat.send('Hello %s!' % (msg['User']['NickName']), toUserName=msg.FromUserName)
+    itchat.send('Hello %s!' % (msg['User']['NickName']), toUserName=msg.FromUserName)
+'''
 
 
 def after_login():
@@ -53,5 +62,6 @@ def after_logout():
 
 # 登陆
 itchat.auto_login(hotReload=True, loginCallback=after_login, exitCallback=after_logout)
+
 # 运行并保持在线状态
-itchat.run()
+itchat.run(blockThread=True)
